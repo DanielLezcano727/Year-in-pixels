@@ -15,4 +15,10 @@ helpers.matchPass = async (pass, mask) => {
     }
 }
 
+helpers.first = (i) => {
+    if(i == 0){
+        return 'primero';
+    }
+    return "";
+}
 module.exports = helpers;

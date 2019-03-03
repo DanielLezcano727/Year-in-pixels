@@ -1,0 +1,79 @@
+{{!-- <?php
+session_start();
+$mostrarEmociones = true;
+    if(!array_key_exists("username",$_SESSION)){
+        header("Location: /Paginas Web/Year in pixels/Login");
+    }
+    try{
+        $username = "DanielLezcano727";
+        $server = "localhost";
+        $password = "Siperono2!";
+        $DBH = new PDO("mysql:host=$server;dbname=pixels",$username,$password);
+        $DBH->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $user = $_SESSION['username'];
+        $pass = $_SESSION['password'];
+        $STH = $DBH->query("SELECT emociones FROM users WHERE username='$user' AND pass='$pass'");
+        $STH->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $STH->fetch();
+        $dia = intval(date("d")) * 2;
+        if(!($dia > strlen($row['emociones']))){
+            $mostrarEmociones = false;
+        }else{
+            $mostrarEmociones = true;
+        }
+    }catch(PDOException $e){
+        echo $e->getMessage();
+
+    }
+?> --}}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 col-md-2 logo fixed-top">
+            <img src="img/logo.svg" class="img-fluid" alt="Year in pixels">
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 ejemplo">
+            <i id="emocionActual" class="fas fa-square fa-4x"></i> <br>
+            <div id="emocion-elegida-texto"></div>
+            <br>
+            <button type="button" onclick="enviar()" class="btn btn-primary boton-aceptar">Aceptar</button>
+        </div>
+        {{!-- <div class="col-12 ejemplo">
+            <h3>Ya ingresaste las emociones para este día</h3>
+        </div> --}}
+        <div class="col-md-8">
+            <div class="container-fluid emociones ">
+                {{#each emotion}}
+                    <div class="row" onclick="elegir()">
+                        <div class="emocion col">
+                            <i class="fas fa-square fa-4x "></i>
+                            <span class="emocion-text ">{{this}}</span>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<script src="js/emotion.js"></script>
+</body>
+
+</html>

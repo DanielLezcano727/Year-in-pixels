@@ -1,0 +1,63 @@
+.ejemplo{
+    margin-top:42vh;
+    text-align: center;
+}
+
+.id0{
+    color:#F34236;
+}
+.id1{
+    color:#E81D62;
+}
+.id2{
+    color:#00BBD3;
+}
+.id3{
+    color:#6639B6;
+}
+.id4{
+    color:#3E50B4;
+}
+.id5{
+    color:#2095F2;
+}
+.id6{
+    color:#4BAE4F;
+}
+.id7{
+    color:#CCDB38;
+}
+.id8{
+    color:#785447;
+}
+.id9{
+    color:#5F7C8A;
+}
+.id10{
+    color:#FEC007;
+}
+.id11{
+    color:#8AC249;
+}
+.id12{
+    color:#00BBD3;
+}
+
+.emocion{
+    margin-top: 3vh;
+    cursor: pointer;
+}
+
+.primero{
+    margin-top:10vh;
+}
+
+.emociones{
+    height: 90vh;
+    overflow-y: scroll;
+}
+
+.emocion-text{
+    font-size: 2em;
+    padding-left: 1em;
+}
