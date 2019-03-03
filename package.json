@@ -1,0 +1,28 @@
+{
+  "name": "year-in-pixels",
+  "version": "0.0.1",
+  "description": "A visual calendar to see how were you felt over the year",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/",
+    "dev": "nodemon src/"
+  },
+  "keywords": [
+    "Pixels",
+    "Year",
+    "emotions"
+  ],
+  "author": "Daniel Lezcano",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "express-mysql-session": "^2.1.0",
+    "morgan": "^1.9.1",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.10",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  }
+}
