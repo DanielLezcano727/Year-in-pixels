@@ -2,6 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const session = require('express-session');
+const mysqlsession = require('express-mysql-session');
 
 //Initializations
 const app = express();
