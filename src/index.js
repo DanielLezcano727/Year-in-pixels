@@ -25,11 +25,12 @@ app.use(morgan('dev'));
 
 //Routes
 app.use(require('./routes/index'));
+app.use(require('./routes/auth'));
 
 //Public
 app.use(express.static(path.join(__dirname, 'public')));   //Donde van a estar las paginas publicas (CSS,JS,HTML)
 
 //Starting the server
 app.listen(app.get('port'), (req,res) => {
-    console.log('Server listening at port ', app.get('port'));
+    console.log(`Server listening at port ${app.get('port')}`);
 });
