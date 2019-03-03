@@ -6,15 +6,15 @@ const helpers = require('./helpers');
 passport.use('local.signup', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password'
-},(username,password,done) => {
+}, async (username,password,done) => {
     const user = {
         username,
         password
     };
     user.password = await helpers.encryptPass(password);
     let res = await db.query('INSERT INTO users SET ?', [user]);
-    user.id = res.id;
-    console.log(id);
+    user.id = res.insertId;
+    console.log(user.id);
     done(null,user);
 }));
 

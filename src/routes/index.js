@@ -9,4 +9,7 @@ router.get('/',(req,res) => {
     });
 });
 
+router.get('/days', (req,res) => {
+    res.send('Welcome');
+})
 module.exports = router;

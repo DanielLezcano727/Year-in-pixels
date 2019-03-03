@@ -9,6 +9,9 @@ router.post('/signup',isNotLoggedIn, passport.authenticate('local.signup', {
     failureRedirect: '/'
 }));
 
-// router.post('/login',isNotLoggedIn, passport.);
+router.post('/login',isNotLoggedIn, passport.authenticate('local.login',{
+    successRedirect: '/days',
+    failureRedirect: '/'
+}));
 
 module.exports = router;
