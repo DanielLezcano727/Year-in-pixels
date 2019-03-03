@@ -5,10 +5,8 @@ router.get('/',(req,res) => {
     res.render('home', {
         nav: true,
         bootstrap: true,
-        css: 'css/main.css'
+        css: 'css/home.css'
     });
 });
-
-
 
 module.exports = router;
