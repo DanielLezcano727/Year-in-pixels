@@ -1,0 +1,35 @@
+.input-user{
+    margin-left: 1em;
+}
+
+#Body{
+    background-image: url("../img/Inicio.jpg");
+    height: 100vh;
+}
+
+.titulo{
+    margin-top: 1em;
+    color: #17A2B8;
+}
+.formulario{
+    margin-top: 2em;
+}
+.tarjeta{
+    background-color: white;
+    margin-top: 1em;
+    margin-right: 1em;
+    margin-left: 1em;
+    border:1px solid #ccc;
+    border-radius: 5px;
+    padding-bottom: 2em;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+}
+
+.modal-img{
+    width: 100%;
+}
+
+.error-form{
+    color: #DC3545;
+    font-size:0.8em;
+}
