@@ -3,6 +3,6 @@ module.exports = {
         return req.isAuthenticated() ? next() : res.redirect('/');
     },
     isNotLoggedIn: (req,res,next) => {
-        return req.isAuthenticated() ? res.redirect('/yearInPixels') : next();
+        return req.isAuthenticated() ? res.redirect('/days') : next();
     }
 }

@@ -1,7 +1,8 @@
 const express = require('express');
 let router = express.Router();
+const {isNotLoggedIn, isLoggedIn} = require('../lib/auth');
 
-router.get('/',(req,res) => {
+router.get('/', isNotLoggedIn, (req,res) => {
     res.render('home', {
         nav: true,
         bootstrap: true,
@@ -9,7 +10,8 @@ router.get('/',(req,res) => {
     });
 });
 
-router.get('/days', (req,res) => {
-    res.send('Welcome');
+router.get('/days', isLoggedIn, (req,res) => {
+    res.render('days', {css:'css/yearInPixels.css'});
+    console.log(req.user);
 })
 module.exports = router;
