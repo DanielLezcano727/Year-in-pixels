@@ -41,7 +41,7 @@ $mostrarEmociones = true;
             <i id="emocionActual" class="fas fa-square fa-4x"></i> <br>
             <div id="emocion-elegida-texto"></div>
             <br>
-            <button type="button" onclick="enviar()" class="btn btn-primary boton-aceptar">Aceptar</button>
+            <a class="btn btn-primary boton-aceptar" onclick="enviar()"><span id='textBtn'>Aceptar</span></a>
         </div>
         {{!-- <div class="col-12 ejemplo">
             <h3>Ya ingresaste las emociones para este día</h3>
@@ -49,7 +49,7 @@ $mostrarEmociones = true;
         <div class="col-md-8">
             <div class="container-fluid emociones ">
                 {{#each emotion}}
-                    <div class="row" onclick="elegir()">
+                    <div class="row">
                         <div class="emocion col">
                             <i class="fas fa-square fa-4x "></i>
                             <span class="emocion-text ">{{this}}</span>
@@ -59,6 +59,9 @@ $mostrarEmociones = true;
             </div>
         </div>
     </div>
+
+
+    <a href="/days" id="hide"></a>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

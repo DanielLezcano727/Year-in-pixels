@@ -3,43 +3,43 @@
     text-align: center;
 }
 
-.id0{
+.id1{
     color:#F34236;
 }
-.id1{
+.id2{
     color:#E81D62;
 }
-.id2{
+.id3{
     color:#00BBD3;
 }
-.id3{
+.id4{
     color:#6639B6;
 }
-.id4{
+.id5{
     color:#3E50B4;
 }
-.id5{
+.id6{
     color:#2095F2;
 }
-.id6{
+.id7{
     color:#4BAE4F;
 }
-.id7{
+.id8{
     color:#CCDB38;
 }
-.id8{
+.id9{
     color:#785447;
 }
-.id9{
+.id10{
     color:#5F7C8A;
 }
-.id10{
+.id11{
     color:#FEC007;
 }
-.id11{
+.id12{
     color:#8AC249;
 }
-.id12{
+.id13{
     color:#00BBD3;
 }
 
@@ -60,4 +60,12 @@
 .emocion-text{
     font-size: 2em;
     padding-left: 1em;
+}
+
+#textBtn{
+    color:white;
+}
+
+#hide{
+    display: none;
 }

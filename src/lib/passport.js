@@ -9,7 +9,8 @@ passport.use('local.signup', new LocalStrategy({
 }, async (username,password,done) => {
     const user = {
         username,
-        password
+        password,
+        emociones: '00'
     };
     user.password = await helpers.encryptPass(password);
     let res = await db.query('INSERT INTO users SET ?', [user]);
