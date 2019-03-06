@@ -17,9 +17,9 @@ router.get('/days', isLoggedIn, (req,res) => {
     // console.log(req.user);
 });
 
-router.get('/emotion', isLoggedIn, (req,res) => {
+router.get('/emotion/:day', isLoggedIn, (req,res) => {
     res.render('emotion',{
-        css:'css/emotion.css',
+        css:'/css/emotion.css',
         awesomeFonts: true,
         bootstrap: true,
         emotion: [
@@ -42,6 +42,9 @@ router.get('/emotion', isLoggedIn, (req,res) => {
 
 router.get('/save/:id/:day', isLoggedIn, async (req,res) => {
     let id = req.params.id.split('').slice(2).join('');
+    if(id < 10){
+        id = `0${id}`;
+    }
     let day = +req.params.day * 2;
     let rows = await db.query(`SELECT emociones FROM users WHERE id = ${req.user.id}`);
     let emociones = rows[0].emociones;
@@ -49,14 +52,19 @@ router.get('/save/:id/:day', isLoggedIn, async (req,res) => {
     for(let i=emociones.length;i<day+2; i+=2){
         emociones += '00';
     }
+    let complete = "";
+    let partOne = emociones.slice(0,day);
+    let partTwo = emociones.slice(day+2);
+    complete = partOne + id + partTwo;
+    // emociones =  + id + emociones.slice(day+3,emociones.length);
 
-    emociones = emociones.slice(0,day) + id + emociones.slice(day+2,emociones.length);
-
-    console.log(emociones);
-
-    await db.query(`UPDATE users SET emociones = ${emociones} WHERE id = ${req.user.id}`);
-
-    res.send('/days');
+    await db.query(`UPDATE users SET emociones = \'${complete}\' WHERE id = ${req.user.id}`);
+    res.send('ok');
 });
+
+router.get('/allemotions', async (req,res) => {
+    let colores = await db.query(`SELECT emociones FROM users WHERE id = ${req.user.id}`);
+    res.send(colores[0].emociones.slice(2));
+})
 
 module.exports = router;

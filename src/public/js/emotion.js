@@ -10,7 +10,9 @@ function enviar() {
             document.getElementById("hide").click();
         }
     };
-    xhttp.open('GET', `/save/${id}`);
+    let url = window.location.href;
+    let day = url.slice(url.length-2,url.length);
+    xhttp.open('GET', `/save/${id}/${day}`);
     xhttp.send();
 }
 

@@ -1,10 +1,11 @@
 function preload(){
     img = loadImage("img/logo2.png");
     
-    // var xhttp = new XMLHttpRequest();
-    // xhttp.open("GET", "php/emociones.php", false);
-    // xhttp.send();
-    // colores = xhttp.responseText;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "allemotions", false);
+    xhttp.send();
+    colores = xhttp.responseText;
+    
     spaceBetweenDays = 250;
     start = true;
     heightBar = 100;
@@ -54,11 +55,14 @@ function touchMoved(){
         if(cantDias < colores.length){
             num = colores.slice(cantDias,cantDias+2);
             col = sentimientos[+num];
+            console.log(num);
             fill(col);
             cantDias+=2;
             textSize(20);
             textoAColocar = emocion(num);
-            text(emocion(num), x-(textoAColocar.length/2)*7.3,windowHeight/2-widthTimeLine*20+5);
+            if(textoAColocar !== ""){
+                text(emocion(num), x-(textoAColocar.length/2)*7.3,windowHeight/2-widthTimeLine*20+5);
+            }
             textSize(50);
         }else{
             fill(33,37,41);
@@ -111,45 +115,48 @@ function mouseReleased(){
 
 function mouseClicked(){
     let position = timelinePos + spaceBetweenDays*totalDays;
-    if(mouseX >= position-20 && mouseX < position+25){
-        simulateClick();
+    if(mouseX % spaceBetweenDays >= (position-20) % spaceBetweenDays && mouseX % spaceBetweenDays < (position+25) % spaceBetweenDays && mouseY > windowHeight/2-(widthTimeLine*17) && mouseY < windowHeight/2-(widthTimeLine*11)){
+        let day = parseInt(-timelinePos / 250 + 2) + parseInt(mouseX / 250);
+        simulateClick(day);
     }
 }
 
 function emocion(num){
     switch (num) {
-        case "00":
-        return "feliz - alegre";
         case "01":
-        return "triste - decepcionado/a";
+        return "feliz - alegre";
         case "02":
-        return "enojado/a - furioso/a";
+        return "triste - decepcionado/a";
         case "03":
-        return "productivo/a";
+        return "enojado/a - furioso/a";
         case "04":
-        return "estresado/a - nervioso/a";
+        return "productivo/a";
         case "05":
-        return "cansado/a - exhausto";
+        return "estresado/a - nervioso/a";
         case "06":
-        return "enfermo/a";
+        return "cansado/a - exhausto";
         case "07":
-        return "perezoso/a";
+        return "enfermo/a";
         case "08":
-        return "excitado/a - emocionado/a";
+        return "perezoso/a";
         case "09":
-        return "preocupado/a - tenso/a";
+        return "excitado/a - emocionado/a";
         case "10":
-        return "normal - neutro/a";
+        return "preocupado/a - tenso/a";
         case "11":
-        return "aburrido/a";
+        return "normal - neutro/a";
         case "12":
+        return "aburrido/a";
+        case "13":
         return "relajado/a - tranquilo/a";
     }
+    return "";
 }
 
 var posicionX = 0, amount = 0, colores = "";
 var start, heightBar, widthTimeLine, timelinePos, spaceBetweenDays, currentDate, totalDays;
 var sentimientos = [
+    "#212529",
     "#F34236",
     "#E81D62",
     "#00BBD3",
@@ -166,6 +173,9 @@ var sentimientos = [
     ];
 var meses = [31,28,31,30,31,30,31,31,30,31,30,31];
 
-function simulateClick(){
-    document.getElementsByClassName('hide')[0].click();
+function simulateClick(day){
+    let hide = document.getElementsByClassName('hide')[0];
+    console.log(day);
+    hide.setAttribute('href',`/emotion/${day}`);
+    hide.click();
 }

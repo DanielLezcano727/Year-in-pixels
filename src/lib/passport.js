@@ -10,7 +10,7 @@ passport.use('local.signup', new LocalStrategy({
     const user = {
         username,
         password,
-        emociones: '00'
+        emociones: '11'
     };
     user.password = await helpers.encryptPass(password);
     let res = await db.query('INSERT INTO users SET ?', [user]);
