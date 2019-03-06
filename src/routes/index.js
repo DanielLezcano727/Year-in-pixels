@@ -14,7 +14,6 @@ router.get('/', isNotLoggedIn, (req,res) => {
 
 router.get('/days', isLoggedIn, (req,res) => {
     res.render('days', {css:'css/yearInPixels.css'});
-    // console.log(req.user);
 });
 
 router.get('/emotion/:day', isLoggedIn, (req,res) => {
@@ -56,7 +55,6 @@ router.get('/save/:id/:day', isLoggedIn, async (req,res) => {
     let partOne = emociones.slice(0,day);
     let partTwo = emociones.slice(day+2);
     complete = partOne + id + partTwo;
-    // emociones =  + id + emociones.slice(day+3,emociones.length);
 
     await db.query(`UPDATE users SET emociones = \'${complete}\' WHERE id = ${req.user.id}`);
     res.send('ok');

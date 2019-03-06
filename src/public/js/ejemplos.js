@@ -55,7 +55,6 @@ function touchMoved(){
         if(cantDias < colores.length){
             num = colores.slice(cantDias,cantDias+2);
             col = sentimientos[+num];
-            console.log(num);
             fill(col);
             cantDias+=2;
             textSize(20);
@@ -175,7 +174,6 @@ var meses = [31,28,31,30,31,30,31,31,30,31,30,31];
 
 function simulateClick(day){
     let hide = document.getElementsByClassName('hide')[0];
-    console.log(day);
     hide.setAttribute('href',`/emotion/${day}`);
     hide.click();
 }
